@@ -1,0 +1,132 @@
+file: test3.txt | mask: abc
+
+ 295 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 592 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 889 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 1186 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 1483 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 1780 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 2077 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 2374 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 2671 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 2968 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 3265 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 3562 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 3859 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 4156 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 4453 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 4750 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 5047 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 5344 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 5641 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 5938 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 8314 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 8611 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 8908 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 9205 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 9502 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 9799 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 10096 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 11284 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 11581 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 11878 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 12175 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 13363 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 13660 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 13957 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 14254 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 14551 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 14848 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 15145 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 16630 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 16927 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 17224 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 17521 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 17818 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 18115 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 18412 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 19600 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 19897 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 20194 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 20491 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 20788 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 21085 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 21382 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 21679 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 21976 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 22273 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 25468 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 26533 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 28663 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 30793 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 31858 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 32923 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 33988 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 35053 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 36118 37 	hexDigit           = digit + "ABCDEFabcdef".
+
+ 38248 37 	hexDigit           = digit + "ABCDEFabcdef".
+

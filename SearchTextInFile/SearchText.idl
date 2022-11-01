@@ -1,0 +1,9 @@
+namespace SearchTextInFile
+{
+    [default_interface]
+    runtimeclass SearchText : Windows.UI.Xaml.Controls.Page
+    {
+        SearchText();
+        Int32 MyProperty;
+    }
+}

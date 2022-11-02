@@ -3,7 +3,7 @@
 
 
 #include "SearchTextData.h"
-
+// класс запуска потока обработчика блока строк из файла
 
 class WorkerThread
 {
@@ -18,7 +18,7 @@ public:
     ~WorkerThread();
     string mask;
     int index;
-        
+    // запуск потока обработчика блоков строк
     bool CreateThread(_SearchTextData &safe_std, map_InfoSearchStroki& safe_ResultSearch);
     std::string name();
     void ExitThread();

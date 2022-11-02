@@ -31,25 +31,19 @@ bool GetWorkStroki::CreateThread()
 {
 	if (!m_thread)
 	{
-		cout << " GetWorkStroki Start thread [" << THREAD_NAME << "]" << endl;
+		//cout << " GetWorkStroki Start thread [" << THREAD_NAME << "]" << endl;
 		m_thread = std::unique_ptr<std::thread>(new thread(&GetWorkStroki::Run, this));
 	}
 	else
 	{
-		cout << " GetWorkStroki Thread [" << THREAD_NAME << "] not created" << endl;
+		//cout << " GetWorkStroki Thread [" << THREAD_NAME << "] not created" << endl;
 	}
 	return true;
 }
 
 std::string GetWorkStroki::name()
 {
-	std::string str = string("Worker[") + std::to_string(index) + "]\n\n\n";
-	//const int num=static_co str.length();
-	/*char nameThreads[100];
-	for (int i = 0; i < str.length(); i++) {
-		nameThreads[i] = str[i];
-	}
-	nameThreads[str.length()] = '\0';*/
+	std::string str = string("Worker[") + std::to_string(index) + "]\n";	
 	return str;
 }
 
@@ -75,7 +69,7 @@ void GetWorkStroki::ExitThread()
 	m_thread->join();
 	m_thread = nullptr;
 
-	cout << " GetWorkStroki Stop Thread [" << name() << "] Timer" << endl;
+	//cout << " GetWorkStroki Stop Thread [" << name() << "] Timer" << endl;
 }
 
 void GetWorkStroki::Run()
@@ -83,7 +77,7 @@ void GetWorkStroki::Run()
 	ifstream input;
 	size_t pos;
 	string line;
-
+	cout << " !!!! START READING INPUT file: " << fname << endl;
 	input.open(fname);
 	if (input.is_open())
 	{
@@ -104,25 +98,24 @@ void GetWorkStroki::Run()
 				_std = new  SearchTextData;
 			};
 		    k++;
-
 		}
+		if ((k + 1) % numStrokiKvant != 0)
+		{
+			_std->numStroki = k % numStrokiKvant;
+			_std->nn = nn;
+			safe_std->push(*_std);
+			nn++;
+			delete _std;
+			_std = new  SearchTextData;
+		};
+		k++;
 	}
-	cout << " GetWorkStroki Stop Thread [" << name() << "] Timer" << endl;
+
+
+
+	//cout << " GetWorkStroki Stop Thread [" << name() << "] Timer" << endl;
+	cout << " FINISHED READING INPUT file: " << fname << endl;
 	return;
 	//system("pause");
-
-	while (1)
-	{
-		if (safe_std->empty())
-		{
-			std::this_thread::sleep_for(1000ms);
-			continue;
-		}
-
-		{
-			std::unique_lock<std::mutex> lk(m_mutex);
-			SearchTextData searchTD;
-			//searchTD = safe_std->begin();
-		}
-	}
+	
 }

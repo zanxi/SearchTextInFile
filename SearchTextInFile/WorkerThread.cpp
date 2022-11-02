@@ -1,3 +1,4 @@
+#include "Search.h"
 #include "WorkerThread.h"
 #include "Fault.h"
 #include <iostream>
@@ -32,7 +33,7 @@ bool WorkerThread::CreateThread(_SearchTextData &safe_std, map_InfoSearchStroki&
 {	
 	if (!m_thread)
 	{
-		cout << " WorkerThread Start thread [" << THREAD_NAME <<"]" << endl;		
+		//cout << " WorkerThread Start thread [" << THREAD_NAME <<"]" << endl;		
 		m_thread = std::unique_ptr<std::thread>(new thread(&WorkerThread::Run, this, safe_std, safe_ResultSearch));
 		
 	}
@@ -77,32 +78,9 @@ void WorkerThread::ExitThread()
     m_thread->join();
     m_thread = nullptr;
 		
-	cout << " WorkerThread Stop Thread [" << name() << "] Timer" << endl;
+	//cout << " WorkerThread Stop Thread [" << name() << "] Timer" << endl;
 }
 
-bool f_search_mask(string& s, string& mask) {
-	int pos, start = 0;
-	string alphabet = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz~!@#$%^&*()}{|<>:;0123456789><";
-	for (int i = start; i < mask.length(); i++) {
-		if (mask[i] == '?') {
-			pos = i;
-			for (int j = 0; j < alphabet.length(); j++) {
-				mask[pos] = alphabet[j];
-				if (s.substr(start, pos + 1) == mask.substr(start, pos + 1)) {
-					start = pos;
-					break;
-				}
-				else {
-					continue;
-				}
-			}
-		}
-	}
-	if (s == mask) {
-		return true;
-	}
-	return false;
-}
 
 void WorkerThread::FindSearch(
 	string mask, 
@@ -112,13 +90,13 @@ void WorkerThread::FindSearch(
 	{
 		string line = _std.stroki[k];
 		string mask2 = mask;
-		//if (!f_search_mask(line, mask2)) 
-		{
-			std::size_t found = _std.stroki[k].find(mask2);
-			if (found != std::string::npos)
+		if (line.length() < mask.size()) continue;
+		int pos = Col(line, mask2);
+		if (pos!=0) 
+		{			
 			{
 				InfoSearchStroka iS;
-				iS.pos = found;
+				iS.pos = pos;
 				iS.line = _std.stroki[k];
 				iS.num = k + 1 + _std.nn * numStrokiKvant;
 				safe_ResultSearch->insert(std::map<int, InfoSearchStroka>::value_type(iS.num, iS));
@@ -136,11 +114,7 @@ void WorkerThread::Run(
 	_SearchTextData safe_std,
 	map_InfoSearchStroki safe_ResultSearch)
 {
-
-    //m_timerExit = false;
-    //std::thread timerThread(&WorkerThread::TimerThread, this);
-
-	
+	    
 	while (!ready)
 	{
 		{
@@ -152,15 +126,14 @@ void WorkerThread::Run(
 					continue;
 				}*/
 				if (!safe_std->empty()) {
-					SearchTextData searchTD = safe_std->front();
-					//safe_std->pop();
-
-					if (safe_std->size() >= 1) safe_std->pop();
-					if (safe_std->size() < 3)
+					if (safe_std->size() > 0) 
 					{
-						cout << "";
+						SearchTextData searchTD = safe_std->front();
+						safe_std->pop();
+
+						//if (safe_std->size() >= 1) safe_std->pop();					
+						FindSearch(mask, searchTD, safe_ResultSearch);
 					}
-					FindSearch(mask, searchTD, safe_ResultSearch);
 					
 				}
 				std::this_thread::sleep_for(sleepTimer);
@@ -168,6 +141,6 @@ void WorkerThread::Run(
 		}
 	}
 	std::unique_lock<std::mutex> lk(m_mutex);
-	cout << "\n WorkerThread Thread [" << name() << "] finished Process" << endl;
+	//cout << "\n WorkerThread Thread [" << name() << "] finished Process" << endl;
 }
 

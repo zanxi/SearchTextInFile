@@ -15,6 +15,7 @@ map_InfoSearchStroki safe_ResultSearch;
 string mask;
 string fname;
 
+//записываем найденные строки в файл
 void OutPut(string fname, string mask, map_InfoSearchStroki safe_info)
 {
 	ofstream fout("output.txt");
@@ -47,87 +48,67 @@ int main(int argc, char** argv)
 	}
 	else
 	{
-		cout << "Not arguments" << endl;
-		mask = "System";
-		fname = "test3.txt";
+		//cout << "Not arguments" << endl;
+		//mask = "System.?o";
+		//mask = "CAA";
+		mask = "aB";
+		fname = "test5.txt";
+		cout << "file: " << fname << " | mask: " << mask << '\n' << endl;
+		//fname = "test2__.txt";
 	}
 	
-	/*cout << "----- 2 ----" << endl;
-	ex2();
-	cout << "----- 3 ----" << endl;
-	ex3();
-	cout << "----- 4 ----" << endl;
-	ex4();
-	cout << "----- 5 ----" << endl;
-	ex5();
-
-
 	
-	system("pause");
-	return 0;
-
-	mask = "System";
-	fname = "test3.txt";
-*/
-
 
 	// запуск чтения файла и составления блоков для поиска SearchInfoText
 	GetWorkStroki gws(1, fname);
 	gws.CreateThread();
+
+	// даем сформироваться первым блокам из файла
 	std::this_thread::sleep_for(2000ms);//sleepTimerMain);
 	
+	//выводим оставшиеся блоки строк из файла для обработки
+	cout << " [INPUT leave num blocks works]" << endl;
+	cout << " [leave works:" << gws.safe_std->size() << "] ";
 	// запусr воркеров для поиска слов в тексте
+    // создаем обработчики блоков
 	for (int i = 0; i < numRunThreads; i++)
 	{
 		thrVec[i] = new WorkerThread(i,mask);		
 		thrVec[i]->CreateThread(gws.safe_std, safe_ResultSearch);
 	}
 
+	
 	std::this_thread::sleep_for(sleepTimerMain);
+
+	//выводим оставшиеся блоки строк из файла для обработки	
 	while (!gws.safe_std->empty()) {
 		std::this_thread::sleep_for(sleepTimerMain);
 		cout << " [leave works:"<< gws.safe_std->size()<<"] " ;		
 	}
 
-	cout << "\n\n\n SEARCH FINISHED"  << endl;
+	if (safe_ResultSearch->empty())
+	cout << "\n\n RESULT SEARCH NOT FIND" << endl;
+
+	// поиск строк завершен, удаляем обработчики
+	cout << "\n\n\n SEARCH FINISHED .... Wait write result ..."  << endl;
 	std::this_thread::sleep_for(sleepTimerMain);
 	for (int i = 0; i < numRunThreads; i++)
 	{
 		thrVec[i]->ExitThread();
 	}
+	gws.ExitThread();
 
-	
-	OutPut(fname, mask, safe_ResultSearch);
-	cout << "\n\n RESULT SEARCH WRITE to OUTPUT.TXT" << endl;
+	if (!safe_ResultSearch->empty())
+	{
+		// записываем в фйл
+		OutPut(fname, mask, safe_ResultSearch);
+		cout << "\n\n Found [" << safe_ResultSearch->size() << "] strok. RESULT SEARCH WRITE to OUTPUT.TXT" << endl;
+	}
+	else
+	{
+		cout << "\n\n RESULT SEARCH NOT FIND" << endl;
+	}
 
-	//for (int i = 0; i < 100; i++)
-	//{
-	//	std::string str = string("UserData[") + to_string(i) + "]";
-	//	char nameMsg[100];
-	//	for (int i = 0; i < str.length(); i++) {
-	//		nameMsg[i] = str[i];
-	//	}
-	//	nameMsg[str.length()] = '\0';
-
-	//	std::shared_ptr<UserData> userData(new UserData());
-	//		
-	//	//const int num=static_co str.length();
-	//	
-	//	userData->msg = nameMsg;
-	//	userData->year = 2017 + i;
-
-	//	// Post the message to worker thread 1
-	//	thrVec[i]->PostMsg(userData);
-	//}
-
-	//	// Give time for messages processing on worker threads
-	//this_thread::sleep_for(3s);
-
-	//for (int i = 0; i < numRunThreads; i++)
-	//{
-	//	thrVec[i]->ExitThread();
-	//}
-
-	//return 0;
+	system("pause");
 }
 

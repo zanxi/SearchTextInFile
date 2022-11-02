@@ -3,6 +3,9 @@
 #include "libh.h"
 #include "SearchTextData.h"
 
+// класс запуска потока дл€ чтени€ файла источника и 
+// формировани€ блоков строк дл€ обработчиков WorkerThread
+
 class GetWorkStroki
 {
 public:    

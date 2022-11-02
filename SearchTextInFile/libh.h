@@ -5,13 +5,13 @@
 //#define _CRT_SECURE_NO_WARNINGS
 //#define __cpp_impl_coroutine
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/regex/regex_traits.hpp>
-#include <boost/regex/pattern_except.hpp>
+//#include <boost/scoped_ptr.hpp>
+//#include <boost/regex/regex_traits.hpp>
+//#include <boost/regex/pattern_except.hpp>
 //#include <boost/filesystem/config.hpp>
 //#include <boost/filesystem/fstream.hpp>
 //#include <boost/filesystem/string_file.hpp>
-#include <boost/algorithm/string.hpp>
+//#include <boost/algorithm/string.hpp>
 //#include <boost/thread/shared_mutex.hpp>
 //#include <boost/thread/locks.hpp>
 

@@ -129,7 +129,7 @@ void WorkerThread::Run(
 					if (safe_std->size() > 0) 
 					{
 						SearchTextData searchTD = safe_std->front();
-						safe_std->pop();
+						safe_std->erase(safe_std->begin());
 
 						//if (safe_std->size() >= 1) safe_std->pop();					
 						FindSearch(mask, searchTD, safe_ResultSearch);

@@ -39,5 +39,5 @@ public:
 //typedef contfree_safe_ptr< std::map<int, SearchTextData>> _SearchTextData;
 
 // тип потокобезопасной очереди хранитель всех блоков строк
-typedef contfree_safe_ptr<std::queue<SearchTextData>> _SearchTextData;
+typedef contfree_safe_ptr<std::list<SearchTextData>> _SearchTextData;
 

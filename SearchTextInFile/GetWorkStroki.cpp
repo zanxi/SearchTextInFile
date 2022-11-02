@@ -92,7 +92,7 @@ void GetWorkStroki::Run()
      		{
 				_std->numStroki = k%numStrokiKvant;
 				_std->nn = nn;
-				safe_std->push(*_std);
+				safe_std->push_back(*_std);
 				nn++;
 				delete _std;
 				_std = new  SearchTextData;
@@ -103,7 +103,7 @@ void GetWorkStroki::Run()
 		{
 			_std->numStroki = k % numStrokiKvant;
 			_std->nn = nn;
-			safe_std->push(*_std);
+			safe_std->push_back(*_std);
 			nn++;
 			delete _std;
 			_std = new  SearchTextData;
